@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='wr-drf-oidc-auth',
-    version='0.9',
+    version='0.9.1',
     packages=['oidc_auth'],
     url='https://github.com/We-Riot/drf-oidc-auth',
     license='MIT',
