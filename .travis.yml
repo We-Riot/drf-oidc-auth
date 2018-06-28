@@ -2,6 +2,7 @@ language: python
 python: 2.7
 install:
 - pip install tox
+all_branches: true
 env:
 - TOXENV=py27-django18-drf32
 - TOXENV=py34-django18-drf32
@@ -9,12 +10,15 @@ env:
 - TOXENV=py34-django110-drf32
 script:
 - tox
-deploy:
-  provider: pypi
-  user: weriot
-  skip_cleanup: true
-  on:
-    tags: true
-  password:
-    secure: UirfTYf4kBbGap7i4Gd10oNnZepCuESCypDL+6dzeixEWnO4lnr6Y9JRR2wvzXDJs8Pqsv2l69Hd4ZB2pppZew10MKAZE7xdxFfPAxki6r/wbLRqk4Do18jQrWkNJzu+KhKVxFWck1QJxRxeeNoHZeX2fFVfPDJGGG6od3GKUkidStjcaShKD6eKvW4k9b5rSR7PZEX7c6X/dMGRznlA95ipQfrWbn9nbaybBsG/EKN7sF0nOSHM74yaSItI3PeqZmAUpenUQvOTKHcRZmDSxWQVnkhezOWa0CcpLSfrLYk1haGI91VVI4VGXx0EwcL+Nt3fFyN05ETs0rIubcHvmuneDG3WTqkmZaiVIA+KupCVU8RM/s3HUN5AMkcWK36793EScBTIMOvXlzNN2L+LkTjNuaM8RmAn4LcTkikncHHHpsdBHvmfnawbT2hr5FupZYzaRs8pq1ftArciAZIW21hAcRz5bjHEltVDJt/a3AaYlAJ3d1iMlWdn6IH1VjEm+RwuoTEc8MP/CIskWxNxWMZJMjpO18nE9Lv7Izp6XTYtpq4aR2SjfLckv8mVOjSsm+GuWnXLBlqJB2FG37Pp+OL21aD6T5+3iYciy0+48YCCoJ0Nk+hlFe3TsQb5qKLTsNwOtt4t1CgQWzKimNu1jQD1z/i1vRQutqyL0yNNWps=
-all_branches: true
+
+jobs:
+  include:
+    - stage: deploy
+      deploy:
+        provider: pypi
+        user: weriot
+        skip_cleanup: true
+        on:
+          tags: true
+        password:
+          secure: UirfTYf4kBbGap7i4Gd10oNnZepCuESCypDL+6dzeixEWnO4lnr6Y9JRR2wvzXDJs8Pqsv2l69Hd4ZB2pppZew10MKAZE7xdxFfPAxki6r/wbLRqk4Do18jQrWkNJzu+KhKVxFWck1QJxRxeeNoHZeX2fFVfPDJGGG6od3GKUkidStjcaShKD6eKvW4k9b5rSR7PZEX7c6X/dMGRznlA95ipQfrWbn9nbaybBsG/EKN7sF0nOSHM74yaSItI3PeqZmAUpenUQvOTKHcRZmDSxWQVnkhezOWa0CcpLSfrLYk1haGI91VVI4VGXx0EwcL+Nt3fFyN05ETs0rIubcHvmuneDG3WTqkmZaiVIA+KupCVU8RM/s3HUN5AMkcWK36793EScBTIMOvXlzNN2L+LkTjNuaM8RmAn4LcTkikncHHHpsdBHvmfnawbT2hr5FupZYzaRs8pq1ftArciAZIW21hAcRz5bjHEltVDJt/a3AaYlAJ3d1iMlWdn6IH1VjEm+RwuoTEc8MP/CIskWxNxWMZJMjpO18nE9Lv7Izp6XTYtpq4aR2SjfLckv8mVOjSsm+GuWnXLBlqJB2FG37Pp+OL21aD6T5+3iYciy0+48YCCoJ0Nk+hlFe3TsQb5qKLTsNwOtt4t1CgQWzKimNu1jQD1z/i1vRQutqyL0yNNWps=
