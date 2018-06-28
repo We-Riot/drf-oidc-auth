@@ -1,10 +1,10 @@
 from setuptools import setup
 
 setup(
-    name='drf-oidc-auth',
+    name='wr-drf-oidc-auth',
     version='0.9',
     packages=['oidc_auth'],
-    url='https://github.com/ByteInternet/drf-oidc-auth',
+    url='https://github.com/We-Riot/drf-oidc-auth',
     license='MIT',
     author='Maarten van Schaik',
     author_email='support@byte.nl',
